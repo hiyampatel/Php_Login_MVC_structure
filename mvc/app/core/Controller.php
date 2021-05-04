@@ -1,5 +1,6 @@
 <?php
 
+// main controller class
 class Controller
 {
     public function model($model)

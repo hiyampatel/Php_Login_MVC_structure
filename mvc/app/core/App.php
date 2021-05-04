@@ -1,5 +1,6 @@
 <?php
 
+// Class to call the controller and its method.
 class App
 {
     // Default paramets of file name controller passed through $_GET

@@ -8,12 +8,22 @@
     <?php
     if(isset($_SESSION['submit']))
     {
-        echo 'Welcome '.$_SESSION['username'];
+        echo 'Welcome '.$_SESSION['Username'];
     }
     else
     {
-        echo "<button><a href='home/login'>Login</a></button><br><button><a href='home/signup'>Sign Up</a></button>";
-        echo "<br><br>".$data['m'];
+        session_start();
+        if(isset($_SESSION['m']))
+        {
+            echo "<button><a href='login'>Login</a></button><br><button><a href='signup'>Sign Up</a></button>";
+            echo "<br><br>".$_SESSION['m'];
+        }
+        else
+        {
+            echo "<button><a href='home/login'>Login</a></button><br><button><a href='home/signup'>Sign Up</a></button>";
+        }
+        session_destroy();
+
     }
 
     ?>

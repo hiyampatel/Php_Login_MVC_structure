@@ -1,5 +1,6 @@
 <?php
 
+//home class which inherits from controller class
 class Home extends Controller
 {
 
@@ -11,30 +12,30 @@ class Home extends Controller
     }
 
 
-
     public function index($name)
     {
         $this->view('home/index');
     }
 
+
+
     public function login()
     {
+        session_start();
         if(isset($_POST['submit']))
         {
             $result =$this->user->check_user($_POST);
-            if($result === True)
+            if($result == 'TRUE')
             {
                 $this->view('home/index');
             }
             else
             {
-                $this->view('home/index', ['m'=>'User does not exist!']);
+                $this->view('home/index');
             }
-
         }
         else
         {
-            session_start();
             $this->view('home/login');
         }
     }
@@ -45,16 +46,20 @@ class Home extends Controller
     {
         if(isset($_POST['submit']))
         {
-            $_SESSION['name'] = $_POST['name'];
-            $_SESSION['username'] = $_POST['username'];
-            $_SESSION['email'] = $_POST['email'];
-            $_SESSION['password'] = $_POST['password'];
-            $_SESSION['submit'] = $_POST['submit'];
+            session_start();
 
-            $this->user->check_user($_POST);
-
-            $this->view('home/index');
-
+            $result = $this->user->check_user($_POST);
+            if($result == 'TRUE')
+            {
+                $_SESSION['m'] = 'User already exist!';
+                unset($_SESSION['submit']);
+                $this->view('home/index');
+            }
+            else
+            {
+                $result = $this->user->enter_data($_POST);
+                $this->view('home/index');
+            }
         }
         else
         {
