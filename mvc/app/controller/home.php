@@ -1,24 +1,27 @@
 <?php
 
-//home class which inherits from controller class
+//Controller class for the home pages
 class Home extends Controller
 {
 
     private $user;
 
+    //Creating a model instance
     public function  __construct()
     {
         $this->user = $this->model('User');
     }
 
-
+    //Calling main index page
     public function index($name)
     {
         $this->view('home/index');
     }
 
 
-
+    //Handle the Login functionality
+    //If redirected after form submission then check for user data into database and redirect to home page
+    //Else display Login page
     public function login()
     {
         session_start();
@@ -41,7 +44,9 @@ class Home extends Controller
     }
 
 
-
+    //Handle the Signup functionality
+    //If redirected after form submission then check for user data into database and store the details if user not found
+    //Else display SignUp page
     public function signup()
     {
         if(isset($_POST['submit']))

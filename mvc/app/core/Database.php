@@ -1,5 +1,6 @@
 <?php
 
+//class for database connection
 class Database
 {
     private $servername;
@@ -13,6 +14,7 @@ class Database
         $this->create_connection();
     }
 
+    //Create Database connection
     private function create_connection()
     {
         $this->servername = 'localhost';

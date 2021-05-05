@@ -50,8 +50,7 @@ class App
     }
 
 
-    //Getting the path or name of controller and method and other parametres passed through $_GET
-    //Converting them to an array
+    //Converting url into an array of controller name, method name and other parameters
     public function parseUrl()
     {
         if(isset($_GET['url']))

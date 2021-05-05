@@ -6,6 +6,7 @@
 <body>
 
     <?php
+    //if session is set i.e. Successful login
     if(isset($_SESSION['submit']))
     {
         echo 'Welcome '.$_SESSION['Username'];

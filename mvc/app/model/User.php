@@ -1,5 +1,6 @@
 <?php
 
+//Class to alter data for User model
 class User extends Database
 {
     protected $name;
@@ -7,6 +8,7 @@ class User extends Database
     protected $email;
     protected $password;
 
+    //Check if User data is present or not
     public function check_user($post_data)
     {
         $sql = 'SELECT * FROM Login_Detail WHERE Username = "'.$post_data['username'].'"';
@@ -38,7 +40,7 @@ class User extends Database
     }
 
 
-
+    //Enters the User data into Login_Detail table
     public function enter_data($post_data)
     {
         $sql = 'INSERT INTO Login_Detail(Name, Username, Email, Password) VALUES ("'.$post_data['name'].'", "'.$post_data['username'].'", "'.$post_data['email'].'", "'.$post_data['password'].'")';
