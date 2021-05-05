@@ -1,1 +1,6 @@
-Hello <?php echo $data['name'];?>
+<?php
+
+//just for demo
+echo "Hello ".$data['name'];
+
+?>
