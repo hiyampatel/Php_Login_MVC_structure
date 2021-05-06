@@ -1,5 +1,6 @@
 <?php
 
+//Methods of bloging page
 Class Blog extends Controller
 {
     protected $user_post;
@@ -24,6 +25,22 @@ Class Blog extends Controller
         $data = $this->user_post->add_post($_POST);
         $this->view('blog/index', $data);
     }
+
+    //getting the data of the post and sending it to edit page
+    public function edit($name = 1)
+    {
+        $data = $this->user_post->get_data($name);
+        $this->view('blog/edit', $data);
+    }
+
+    //update the post
+    public function update($id)
+    {
+        $data = $this->user_post->update_post($_POST, $id);
+        header('Location: /blog/index');
+    }
+
+
 
 }
 

@@ -5,7 +5,6 @@ if(isset($_SESSION['Id']))
 {
     echo "Welcome ".$_SESSION['Username'];
 }
-
 ?>
 
 <!DOCTYPE html>
@@ -28,7 +27,12 @@ if(isset($_SESSION['Id']))
                 while($row = $data->fetch_assoc())
                 {
                     echo "<p><b>".$row['Post']."</b></p><p>".$row['Date_Time']."</p>";
-                    echo "<button>Edit</button><hr>";
+                    echo "<button><a href='edit/".$row['Id']."'>Edit</a></button>";
+                    if($row['Edit_Time'] != NULL)
+                    {
+                        echo "(Last Edited: ".$row['Edit_Time'].")<br>";
+                    }
+                    echo "<hr>";
                 }
             }
             else
