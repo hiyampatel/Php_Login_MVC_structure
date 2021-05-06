@@ -11,14 +11,7 @@ class Post extends Database
 
         $sql = "INSERT INTO Post_Data(User_Id, Post, Date_Time) VALUES(".$_SESSION['Id'].", '".$post_data['blogpost']."', NOW())";
 
-        if($this->conn->query($sql) === True)
-        {
-            echo 'Sucessfully created';
-        }
-        else
-        {
-            echo 'Couldn\'t add the post';
-        }
+        $this->conn->query($sql);
 
         $data = $this->display_post($_SESSION['Id']);
 
@@ -66,6 +59,15 @@ class Post extends Database
         return ;
     }
 
+
+    //Delete the post
+    public function delete_post($id)
+    {
+        $sql = "DELETE FROM Post_Data WHERE Id=".$id[0];
+
+        $this->conn->query($sql);
+        return ;
+    }
 }
 
 ?>

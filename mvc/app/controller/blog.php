@@ -36,11 +36,26 @@ Class Blog extends Controller
     //update the post
     public function update($id)
     {
-        $data = $this->user_post->update_post($_POST, $id);
+        $this->user_post->update_post($_POST, $id);
         header('Location: /blog/index');
     }
 
 
+    public function delete($id)
+    {
+        $this->user_post->delete_post($id);
+        header('Location: /blog/index');
+
+    }
+
+    public function logout()
+    {
+        session_start();
+        unset($_SESSION['submit']);
+        unset($_SESSION['m']);
+        header('Location: /home/index');
+        //$this->view('home/index');
+    }
 
 }
 
