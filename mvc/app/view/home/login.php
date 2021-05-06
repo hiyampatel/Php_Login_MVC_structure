@@ -6,8 +6,8 @@
 <body>
     <h1>Login</h1>
     <form method="POST" action="login">
-        Username: <input type="text" name="username"><br><br>
-        Password: <input type="password" name="password"><br><br>
+        Username: <input type="text" name="username" required><br><br>
+        Password: <input type="password" name="password" required><br><br>
         <input type="submit" name="submit" value="login"><br><br>
     </form>
     <div>
