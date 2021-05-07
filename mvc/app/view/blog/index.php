@@ -1,10 +1,6 @@
 <?php
 session_start();
 
-if(isset($_SESSION['Id']))
-{
-    echo "Welcome ".$_SESSION['Username'];
-}
 ?>
 
 <!DOCTYPE html>
@@ -13,11 +9,20 @@ if(isset($_SESSION['Id']))
   <title>Blog</title>
 </head>
 <body>
-    <ul>
-        <li>Home</li>
-        <li>Blog</li>
-        <li><a href="/blog/logout">Logout</a></li>
-    </ul>
+    <div class='navbar'>
+        <img src='/Images/logo-f.png'>
+        <ul>
+            <li>Home</li>
+            <li>Blog</li>
+            <li><a href="/blog/logout">Logout</a></li>
+        </ul>
+    </div>
+    <div class='head'>
+        <div class='inner'>
+        <br>
+            <h1>Creating & Viewing<br> Posts</h1>
+        </div>
+    </div>
     <h1>Posts</h1>
     <div>
         <?php

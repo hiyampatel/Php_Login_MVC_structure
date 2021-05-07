@@ -15,23 +15,23 @@ class User extends Database
         {
             $row = $data->fetch_assoc();
 
-            if((($post_data['submit'] == 'login') and ($post_data['password'] == $row['Password']) and ($post_data['username'] == $row['Username'])) or ($post_data['submit'] == 'signup'))
+            if((($post_data['submit'] == 'Login') and ($post_data['password'] == $row['Password']) and ($post_data['username'] == $row['Username'])) or ($post_data['submit'] == 'Sign Up'))
             {
                 foreach ($row as $key => $value)
                 {
                     $_SESSION[$key] = $value;
                 }
                 $_SESSION['submit'] = $post_data['submit'];
-                return 'TRUE';
+                return 'T';
             }
             else
             {
                 $_SESSION['m'] = 'Not valid password or username';
-                return 'False';
+                return 'F';
             }
         }
         $_SESSION['m'] = 'User does not exist!';
-        return 'False';
+        return 'F';
     }
 
 
@@ -43,12 +43,12 @@ class User extends Database
         if($this->conn->query($sql) === True)
         {
             $_SESSION['m'] = 'Sucessfully created account.';
-            return 'TRUE';
+            return 'T';
         }
         else
         {
             $_SESSION['m'] = "Couldn't create account!";
-            return 'TRUE';
+            return 'F';
         }
 
     }

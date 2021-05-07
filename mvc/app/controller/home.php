@@ -28,13 +28,13 @@ class Home extends Controller
         if(isset($_POST['submit']))
         {
             $result =$this->user->check_user($_POST);
-            if($result == 'TRUE')
+            if($result == 'T')
             {
                 header('Location: /blog/index');
             }
             else
             {
-                header('Location: /home/index');
+                header('Location: /home/login');
             }
         }
         else
@@ -54,16 +54,24 @@ class Home extends Controller
             session_start();
 
             $result = $this->user->check_user($_POST);
-            if($result == 'TRUE')
+            echo $result;
+            if($result == 'T')
             {
                 $_SESSION['m'] = 'User already exist!';
                 unset($_SESSION['submit']);
-                header('Location: /home/index');
+                header('Location: /home/signup');
             }
             else
             {
                 $result = $this->user->enter_data($_POST);
-                header('Location: /home/index');
+                if(isset($_SESSION['m']))
+                {
+                    header('Location: /home/signup');
+                }
+                else
+                {
+                    header('Location: /home/index');
+                }
             }
         }
         else

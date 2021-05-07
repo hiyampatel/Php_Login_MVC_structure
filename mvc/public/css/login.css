@@ -1,0 +1,65 @@
+
+body
+{
+
+    box-sizing: border-box;
+    font-size: 20px;
+    margin: 100px 0;
+    font-family: sans-serif;
+}
+
+.main-login, .main-signup
+{
+    max-width: 450px;
+    min-width: 200px;
+    text-align: center;
+    padding: 40px 15px 50px;
+    background-color: #808080;
+    margin: auto;
+}
+
+.main-signup
+{
+    margin: -40px auto;
+}
+
+h1
+{
+    font-size: 65px;
+}
+
+a
+{
+    color: #ffffff;
+}
+
+input[type=text], input[type=password], input[type=email]
+{
+    height: 20px;
+    width: 200px;
+    font-size: 17px;
+    border-radius: 2px;
+}
+
+input[type=submit]
+{
+    padding: 5px 10px;
+    font-size: 17px;
+    width: 300px;
+    border: 1px solid #000000;
+    border-radius: 2px;
+    font-weight: 900;
+    background-color: #000000;
+    color: #ffffff;
+}
+
+.msg
+{
+    text-align: center;
+    border: #ff0000 solid 1px;
+    background-color: rgba(255,0,0,0.1);
+    margin: 10px 35%;
+    padding: 10px 0;
+    color: #ff0000;
+    font-size: 15px;
+}
