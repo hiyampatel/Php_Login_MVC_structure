@@ -2,7 +2,7 @@
 <html>
 <head>
     <title>Login</title>
-    <link rel="stylesheet" type='text/css' href="/css/login.css">
+    <link rel="stylesheet" type='text/css' href="/css/home/login.css">
 </head>
 <body>
     <div class="main-login">
@@ -13,7 +13,7 @@
             <input type="submit" name="submit" value="Login"><br><br>
         </form>
         <div>
-            <p>OR<br>Signup to create an account.
+            <p>OR<br><br>Signup to create an account.
             <a href="/home/signup"><b>Signup</b></a></p>
         </div>
     </div>

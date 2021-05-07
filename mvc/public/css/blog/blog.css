@@ -44,7 +44,7 @@ body
 
 .head
 {
-    background-image: url('../Images/main-2.jpg');
+    background-image: url('../../Images/main-2.jpg');
     background-size: cover;
     margin: 0;
     padding: 0;

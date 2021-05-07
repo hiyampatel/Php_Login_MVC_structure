@@ -9,13 +9,13 @@ session_start();
     <title>Blog</title>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Catamaran:wght@100;400;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="/css/blog.css">
+    <link rel="stylesheet" type="text/css" href="/css/blog/blog.css">
 </head>
 <body>
     <div class='navbar'>
         <img src='/Images/logo-f.png'>
         <ul>
-            <li><a href="">Home</a></li>
+            <li><a href="/home/index">Home</a></li>
             <li><a href="#">Blog</a></li>
             <li><a href="/blog/logout">Logout</a></li>
         </ul>
@@ -35,6 +35,7 @@ session_start();
                     while($row = $data->fetch_assoc())
                     {
                         echo "<div class='list-item'>";
+                        $date = $row['Date_Time'];
                         echo "<p><b>".$row['Post']."</b></p><p>".$row['Date_Time']."</p>";
                         echo "<button><a href='edit/".$row['Id']."'>Edit</a></button>";
                         echo "<button><a href='/blog/delete/".$row['Id']."'>Delete</a></button>";
@@ -57,7 +58,7 @@ session_start();
             <form method="post" action="post">
                 Add Post:<br>
                 <textarea name="blogpost" rows=2 required></textarea><br>
-                <input type="submit" name="submit">
+                <input type="submit" name="submit" value="Submit">
             </form>
         </div>
     </div>
