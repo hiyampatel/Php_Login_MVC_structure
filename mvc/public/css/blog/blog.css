@@ -42,6 +42,16 @@ body
     font-weight: 700;
 }
 
+.navbar i
+{
+    display: none;
+}
+
+.active
+{
+    font-weight: 700;
+}
+
 .head
 {
     background-image: url('../../Images/main-2.jpg');
@@ -137,4 +147,122 @@ input[type=submit]:hover
 {
     background-color: #708090;
     color: #ffffff;
+}
+
+.bottom
+{
+    display: relative;
+}
+
+.bottom .square
+{
+    background-color: #708090;
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    bottom: 149px;
+    right: 10px;
+}
+
+.square i
+{
+    padding: 0 10px 7px;
+}
+
+.square .fa-sort-up
+{
+    padding-top:10px;
+}
+
+@media screen and (max-width:650px)
+{
+    .inner h1
+    {
+        font-size: 45px;
+        margin-top: 30px;
+    }
+
+    .navbar img
+    {
+        height:30px;
+    }
+
+    .head
+    {
+        height:250px;
+    }
+
+    .navbar i
+    {
+        display: inline-block;
+        float:right;
+        padding: 15px 10% 0 0;
+        cursor: pointer;
+    }
+
+    .navbar a
+    {
+        color: #ffffff;
+        font-size: 15px;
+    }
+
+    .navbar li
+    {
+        display: block;
+        background-color: #000000;
+        padding: 5px 20px;
+    }
+
+    .navbar li:hover
+    {
+        font-weight: 400;
+        background-color: #708090;
+        transition: 0.5s;
+    }
+
+    .navbar ul.show
+    {
+        display: block;
+    }
+
+    .navbar ul
+    {
+        display: none;
+        position: absolute;
+        top:40px;
+        right: 0;
+    }
+
+    .content
+    {
+        font-size: 15px;
+        margin-bottom: 150px;
+    }
+
+    .list-item button
+    {
+        font-size: 13px;
+        padding: 2px 5px;
+    }
+
+    .add-form, .add-form textarea
+    {
+        font-size: 15px;
+    }
+
+    .add-form input[type=submit]
+    {
+        font-size: 13px;
+        padding: 1px 5px;
+    }
+
+    .add-form
+    {
+        margin: 10px 10%;
+    }
+
+    .bottom .square
+    {
+        bottom:104px;
+    }
 }

@@ -41,6 +41,11 @@ body
     font-weight: 700;
 }
 
+.navbar i
+{
+    display: none;
+}
+
 .head
 {
     background-image: url('../../Images/main-2.jpg');
@@ -100,4 +105,77 @@ button a
     color: #ffffff;
 }
 
+@media screen and (max-width:650px)
+{
+    .inner h1
+    {
+        font-size: 45px;
+        margin-top: 30px;
+    }
 
+    .navbar img
+    {
+        height:30px;
+    }
+
+    .head
+    {
+        height:200px;
+    }
+
+    .navbar i
+    {
+        display: inline-block;
+        float:right;
+        padding: 15px 10% 0 0;
+        cursor: pointer;
+    }
+
+    .navbar a
+    {
+        color: #ffffff;
+        font-size: 15px;
+    }
+
+    .navbar li
+    {
+        display: block;
+        background-color: #000000;
+        padding: 5px 20px;
+    }
+
+    .navbar li:hover
+    {
+        font-weight: 400;
+        background-color: #708090;
+        transition: 0.5s;
+    }
+
+    .navbar ul.show
+    {
+        display: block;
+    }
+
+    .navbar ul
+    {
+        display: none;
+        position: absolute;
+        top:40px;
+        right: 0;
+    }
+
+    .content
+    {
+        padding: 50px 10%;
+    }
+
+    .content textarea
+    {
+        font-size: 15px;
+    }
+
+    .content button, input[type=submit]
+    {
+        font-size: 13px;
+    }
+}

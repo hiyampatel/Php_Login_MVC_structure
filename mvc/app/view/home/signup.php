@@ -8,11 +8,11 @@
     <div class="main-signup">
         <h1>Sign Up </h1>
         <form method="POST" action="signup">
-            Name:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="text" name="name" required><br><br>
+            Name:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="text" name="name" required><br><br>
             Username: <input type="text" name="username" required><br><br>
             Email:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="email" name="email" required><br><br>
-            Password: <input type="password" name="password" required><br><br>
-            <input type="submit" name="submit" value="Sign Up"><br><br>
+            Password: <input type="password" name="password" required><br><br><br>
+            <input type="submit" name="submit" value="Sign Up"><br>
         </form>
         <div>
             <p>OR</p>
