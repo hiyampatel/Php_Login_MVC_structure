@@ -54,7 +54,6 @@ class Home extends Controller
             session_start();
 
             $result = $this->user->check_user($_POST);
-            echo $result;
             if($result == 'T')
             {
                 $_SESSION['m'] = 'User already exist!';
