@@ -15,7 +15,7 @@ class Home extends Controller
     //Calling main index page
     public function index($name)
     {
-        $this->view('home/index');
+        header('Location: /blog/display');
     }
 
 
@@ -78,6 +78,11 @@ class Home extends Controller
             session_start();
             $this->view('home/signup');
         }
+    }
+
+    public function aboutus()
+    {
+        $this->view('home/aboutus');
     }
 }
 

@@ -30,7 +30,9 @@ session_start();
         <i class="fas fa-bars toggle"></i>
         <ul class=''>
             <li><a href="/home/index">Home</a></li>
+            <li><a href="/home/aboutus">About Us</a></li>
             <li><a href="" class="active">Blog</a></li>
+            <li><a href="/blog/add">Add Post</a></li>
             <li><a href="/blog/logout">Logout</a></li>
         </ul>
     </div>
@@ -68,17 +70,5 @@ session_start();
         </div>
     </div>
 
-    <div class="bottom">
-        <div class="square">
-            <i class="fas fa-sort-down" ></i>
-        </div>
-        <div class="add-form">
-            <form method="post" action="post">
-                Add Post:<br>
-                <textarea name="blogpost" rows=1 required></textarea><br>
-                <input type="submit" name="submit" value="Submit">
-            </form>
-        </div>
-    </div>
 </body>
 </html>
