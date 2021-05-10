@@ -7,9 +7,12 @@ class User extends Database
     public function check_user($post_data)
     {
         session_start();
-        $sql = 'SELECT * FROM Login_Detail WHERE Username = "'.$post_data['username'].'"';
+        $sql = 'SELECT * FROM Login_Detail WHERE Username = ?';
 
-        $data = $this->conn->query($sql);
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bind_param("s", $post_data['username']);
+        $stmt->execute();
+        $data = $stmt->get_result();
 
         if($data->num_rows > 0)
         {
@@ -89,9 +92,13 @@ class User extends Database
             return 'F';
         }
 
-        $sql = 'INSERT INTO Login_Detail(Name, Username, Email, Password) VALUES ("'.$post_data['name'].'", "'.$post_data['username'].'", "'.$post_data['email'].'", "'.$post_data['password'].'")';
+        $sql = 'INSERT INTO Login_Detail(Name, Username, Email, Password) VALUES (?,?,?,?)';
 
-        if($this->conn->query($sql) === True)
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bind_param("ssss", $post_data['name'], $post_data['username'], $post_data['email'], $post_data['password']);
+        $stmt->execute();
+
+        if($stmt->execute() === True)
         {
             $_SESSION['m'] = 'Sucessfully created account.';
             return 'T';

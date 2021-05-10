@@ -54,7 +54,6 @@ Class Blog extends Controller
         unset($_SESSION['submit']);
         unset($_SESSION['m']);
         header('Location: /home/index');
-        //$this->view('home/index');
     }
 
 }
