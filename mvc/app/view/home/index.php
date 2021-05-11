@@ -30,7 +30,7 @@ session_start();
             if(isset($_SESSION['submit']))
             {
                 echo "<ul class=''>
-                        <li><a href='' class='active'>Home</a></li>
+                        <li><a href='#' class='active'>Home</a></li>
                         <li><a href='/blog/index'>Blog</a></li>
                         <li><a href='/blog/post'>All Post</a></li>
                         <li><a href='/blog/add'>Add Post</a></li>
@@ -41,7 +41,7 @@ session_start();
             else
             {
                 echo "<ul class=''>
-                        <li><a href='' class='active'>Home</a></li>
+                        <li><a href='#' class='active'>Home</a></li>
                         <li><a href='/blog/post'>All Post</a></li>
                         <li><a href='/home/login'>Login</a></li>
                         <li><a href='/home/signup'>Sign Up</a></li>
@@ -65,14 +65,14 @@ session_start();
                 {
                     while($row = $data->fetch_assoc())
                     {
-                        echo "<div class='list-item'>";
-                        echo "<p><b>".$row['Name']."</b></p>";
+                        echo "<a href='/blog/post/".$row['Id']."'><div class='list-item'>";
+                        echo "<p><b>@".$row['Username']."</b></p>";
                         echo "<p><b>".$row['Post']."</b></p><p>".$row['Date_Time'];
                         if($row['Edit_Time'] != NULL)
                         {
                             echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(Edited: ".$row['Edit_Time'].")";
                         }
-                        echo "</p></div>";
+                        echo "</p></div></a>";
                     }
                 }
                 else

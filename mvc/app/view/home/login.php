@@ -15,6 +15,7 @@
         <div>
             <p>OR<br><br>Signup to create an account.
             <a href="/home/signup"><b>Signup</b></a></p>
+            <p>Go to Home page.  <a href="/home/index">Home</a></p>
         </div>
     </div>
     <?php

@@ -7,7 +7,7 @@ session_start();
 <html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Post</title>
+    <title><?php echo "Blog #".$data['Id'] ?></title>
 
     <!--js cdn-->
     <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
@@ -32,9 +32,9 @@ session_start();
             if(isset($_SESSION['submit']))
             {
                 echo "<ul class=''>
-                        <li><a href='home/index' >Home</a></li>
+                        <li><a href='/home/index' >Home</a></li>
                         <li><a href='/blog/index'>Blog</a></li>
-                        <li><a href='' class='active'>All Post</a></li>
+                        <li><a href='/blog/post' >All Post</a></li>
                         <li><a href='/blog/add'>Add Post</a></li>
                         <li><a href='/home/aboutus'>About Us</a></li>
                         <li><a href='/blog/logout'>Logout</a></li>
@@ -44,41 +44,34 @@ session_start();
             {
                 echo "<ul class=''>
                         <li><a href='/home/index' >Home</a></li>
-                        <li><a href='' class='active'>All Post</a></li>
+                        <li><a href='/blog/post'>All Post</a></li>
                         <li><a href='/home/login'>Login</a></li>
                         <li><a href='/home/signup'>Sign Up</a></li>
                       </ul>";
             }
         ?>
     </div>
-    <div class='head'>
+    <div class='head1'>
         <div class='inner'>
         <br>
-            <h1>Keep updated with others <br>See what all got...</h1>
+            <h1>Post</h1>
         </div>
     </div>
 
     <div class="content-all">
         <div class="post-list-all">
             <?php
-                if($data != 'No Posts')
+                echo "<div class='list-item'>
+                    <p>Username: <b>".$data['Username']."</b></p>
+                    <p>Post: <br><b>".$data['Post']."</b></p>";
+                $date = explode(" ", $data['Date_Time']);
+                echo "<p>Post Date: ".$date[0]."</p>";
+                echo "<p>Post Time: ".$date[1]."</p>";
+                if($data['Edit_Time'] != NULL)
                 {
-                    while($row = $data->fetch_assoc())
-                    {
-                        echo "<a href='/blog/post/".$row['Id']."'><div class='list-item'>
-                            <p><b>@".$row['Username']."</b></p>
-                            <p><b>".$row['Post']."</b></p><p>".$row['Date_Time'];
-                        if($row['Edit_Time'] != NULL)
-                        {
-                            echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(Edited: ".$row['Edit_Time'].")<br>";
-                        }
-                        echo "</p></div></a>";
-                    }
+                    echo "<p>Edited: ".$data['Edit_Time']."</p>";
                 }
-                else
-                {
-                    echo $data. "<hr>";
-                }
+                echo "</div>";
             ?>
         </div>
     </div>

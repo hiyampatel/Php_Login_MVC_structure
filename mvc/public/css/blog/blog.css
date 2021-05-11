@@ -52,13 +52,18 @@ body
     font-weight: 700;
 }
 
-.head
+.head, .head1
 {
     background-image: url('../../Images/main-2.jpg');
     background-size: cover;
     margin: 0;
     padding: 0;
     height: 350px;
+}
+
+.head1
+{
+    height: 250px;
 }
 
 .inner
@@ -74,6 +79,13 @@ body
     text-align: center;
     margin-top: 50px;
     font-weight: 700;
+}
+
+.user-pic i, .user-pic img
+{
+    width: 100px;
+    height: 100px;
+    margin-top: 25px;
 }
 
 .content
@@ -92,6 +104,8 @@ body
 {
     width: 23%;
     float: left;
+    text-align: center;
+    margin-bottom: 80px;
     padding-left: 20px;
     border: 1px #dddddd solid;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -103,6 +117,11 @@ body
     float: right;
 }
 
+.post-list-all a, .post-list a
+{
+    text-decoration: none;
+}
+
 .list-item
 {
     padding: 0 5% 15px;
@@ -110,6 +129,7 @@ body
     margin-bottom: 15px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
+
 .list-item button
 {
     margin-right: 15px;
@@ -126,7 +146,12 @@ button:hover
     background-color: #708090;
 }
 
-.list-item a
+.list-item a, .list-item
+{
+    color: #000000;
+}
+
+.list-item button a
 {
     text-decoration: none;
     color: #ffffff;
@@ -164,6 +189,11 @@ input[type=submit]:hover
         margin-top: 30px;
     }
 
+    .head1 .inner h1
+    {
+        margin-top: 20px;
+    }
+
     .navbar img
     {
         height:30px;
@@ -172,6 +202,11 @@ input[type=submit]:hover
     .head
     {
         height:250px;
+    }
+
+    .head1
+    {
+        height: 150px;
     }
 
     .navbar i

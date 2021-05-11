@@ -46,6 +46,17 @@ session_start();
 
     <div class="content">
         <div class="user-info">
+            <?php
+            if($_SESSION['Photo']==NULL)
+            {
+                echo "<div class='user-pic'><img src='../../../Images/profile.png'></div>";
+            }
+            else
+            {
+                $path = ltrim($_SESSION['Photo'], '/public');
+                echo '<div class="user-pic"><img src="../../../'.$path.'"></div>';
+            }
+            ?>
             <h2><?php echo $_SESSION['Name'];?></h2>
             <p><?php echo $_SESSION['Username'];?><br>
             <?php echo $_SESSION['Email'];?></p>
@@ -56,7 +67,7 @@ session_start();
                 {
                     while($row = $data->fetch_assoc())
                     {
-                        echo "<div class='list-item'>";
+                        echo "<a href='/blog/post/".$row['Id']."'><div class='list-item'>";
                         echo "<p><b>".$row['Post']."</b></p><p>".$row['Date_Time']."</p>";
                         echo "<button><a href='edit/".$row['Id']."'>Edit</a></button>";
                         echo "<button><a onclick='return confirm(\"Are you sure you want to delete the post?\")' href='/blog/delete/".$row['Id']."'>Delete</a></button>";
@@ -64,7 +75,7 @@ session_start();
                         {
                             echo "(Edited: ".$row['Edit_Time'].")<br>";
                         }
-                        echo "</div>";
+                        echo "</div></a>";
                     }
                 }
                 else

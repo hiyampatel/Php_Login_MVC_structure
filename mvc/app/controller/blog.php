@@ -62,10 +62,18 @@ Class Blog extends Controller
         header('Location: /home/index');
     }
 
-    public function post()
+    public function post($id)
     {
-        $data = $this->user_post->post_all();
-        $this->view('blog/post', $data);
+        if(empty($id))
+        {
+            $data = $this->user_post->post_all();
+            $this->view('blog/post', $data);
+        }
+        else
+        {
+            $data = $this->user_post->get_data($id);
+            $this->view('blog/show', $data);
+        }
     }
 
 }

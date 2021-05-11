@@ -92,15 +92,41 @@ class User extends Database
             return 'F';
         }
 
-        $sql = 'INSERT INTO Login_Detail(Name, Username, Email, Password) VALUES (?,?,?,?)';
+        //check for image and upload it to Images/Profile folder
+        $position = 'Images/' .  basename($_FILES["file"]["name"]);
+        $type = $_FILES["file"]["type"];
+        $img_path = '/public/Images/Profile/'.$post_data['username'].'.jpg';
+        if(!empty($_FILES["file"]))
+        {
+            if(preg_match("/Image/i", $type) == 0)
+            {
+                $_SESSION['m'] = 'Not an image file!';
+                return 'F';
+            }
+            else
+            {
+                if (copy($_FILES["file"]["tmp_name"], __DIR__.'/../..'.$img_path)===False)
+                {
+                    $_SESSION['m'] = 'Could not upload profile image. Try again.';
+                    return 'F';
+                }
+            }
+        }
+        else
+        {
+            $img_path = NULL;
+        }
+
+
+
+        $sql = 'INSERT INTO Login_Detail(Name, Username, Email, Password, Photo) VALUES (?,?,?,?,?)';
 
         $stmt = $this->conn->prepare($sql);
-        $stmt->bind_param("ssss", $post_data['name'], $post_data['username'], $post_data['email'], $post_data['password']);
-        $stmt->execute();
+        $stmt->bind_param("sssss", $post_data['name'], $post_data['username'], $post_data['email'], $post_data['password'], $img_path);
 
         if($stmt->execute() === True)
         {
-            $_SESSION['m'] = 'Sucessfully created account.';
+            unset($_SESSION['m']);
             return 'T';
         }
         else
@@ -142,7 +168,7 @@ class User extends Database
 
     public function home_data()
     {
-        $sql = "SELECT P.Id, L.Name, P.Post, P.Date_Time, P.Edit_Time FROM Post_Data AS P, Login_Detail AS L WHERE P.User_Id = L.Id ORDER BY P.Date_Time DESC LIMIT 10";
+        $sql = "SELECT P.Id, L.Username, P.Post, P.Date_Time, P.Edit_Time FROM Post_Data AS P, Login_Detail AS L WHERE P.User_Id = L.Id ORDER BY P.Date_Time DESC LIMIT 10";
 
         $data = $this->conn->query($sql);
 
