@@ -31,9 +31,10 @@ session_start();
             {
                 echo "<ul class=''>
                         <li><a href='' class='active'>Home</a></li>
-                        <li><a href='/home/aboutus'>About Us</a></li>
                         <li><a href='/blog/index'>Blog</a></li>
+                        <li><a href='/blog/post'>All Post</a></li>
                         <li><a href='/blog/add'>Add Post</a></li>
+                        <li><a href='/home/aboutus'>About Us</a></li>
                         <li><a href='/blog/logout'>Logout</a></li>
                       </ul>";
             }
@@ -41,6 +42,7 @@ session_start();
             {
                 echo "<ul class=''>
                         <li><a href='' class='active'>Home</a></li>
+                        <li><a href='/blog/post'>All Post</a></li>
                         <li><a href='/home/login'>Login</a></li>
                         <li><a href='/home/signup'>Sign Up</a></li>
                       </ul>";

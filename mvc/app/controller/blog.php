@@ -62,6 +62,12 @@ Class Blog extends Controller
         header('Location: /home/index');
     }
 
+    public function post()
+    {
+        $data = $this->user_post->post_all();
+        $this->view('blog/post', $data);
+    }
+
 }
 
 ?>

@@ -66,8 +66,8 @@ body
 {
     font-size: 70px;
     text-align: center;
-    margin-top: 70px;
-    font-weight: 400;
+    margin-top: 65px;
+    font-weight: 700;
 }
 
 .content
@@ -105,7 +105,7 @@ button a
     color: #ffffff;
 }
 
-@media screen and (max-width:650px)
+@media screen and (max-width:900px)
 {
     .inner h1
     {

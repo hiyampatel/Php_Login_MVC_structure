@@ -57,7 +57,7 @@ body
     background-size: cover;
     margin: 0;
     padding: 0;
-    height: 400px;
+    height: 350px;
 }
 
 .inner
@@ -71,8 +71,8 @@ body
 {
     font-size: 70px;
     text-align: center;
-    margin-top: 78px;
-    font-weight: 400;
+    margin-top: 50px;
+    font-weight: 700;
 }
 
 .content
@@ -99,7 +99,7 @@ body
     padding: 15px 0;
 }
 
-@media screen and (max-width:650px)
+@media screen and (max-width:900px)
 {
     .inner h1
     {
@@ -156,5 +156,13 @@ body
         position: absolute;
         top:40px;
         right: 0;
+    }
+    .content
+    {
+        font-size: 15px;
+    }
+    .content h1
+    {
+        font-size: 30px;
     }
 }

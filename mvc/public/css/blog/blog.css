@@ -58,7 +58,7 @@ body
     background-size: cover;
     margin: 0;
     padding: 0;
-    height: 400px;
+    height: 350px;
 }
 
 .inner
@@ -72,14 +72,35 @@ body
 {
     font-size: 70px;
     text-align: center;
-    margin-top: 78px;
-    font-weight: 400;
+    margin-top: 50px;
+    font-weight: 700;
 }
 
 .content
 {
+    margin: 50px 10% 80px 5%;
+    font-size: 20px;
+}
+
+.content-all
+{
     margin: 50px 10% 80px;
     font-size: 20px;
+}
+
+.user-info
+{
+    width: 23%;
+    float: left;
+    padding-left: 20px;
+    border: 1px #dddddd solid;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.post-list
+{
+    width: 72%;
+    float: right;
 }
 
 .list-item
@@ -135,7 +156,7 @@ input[type=submit]:hover
     color: #ffffff;
 }
 
-@media screen and (max-width:650px)
+@media screen and (max-width:900px)
 {
     .inner h1
     {
@@ -204,5 +225,10 @@ input[type=submit]:hover
     {
         font-size: 13px;
         padding: 2px 5px;
+    }
+
+    .content-all
+    {
+        font-size: 15px;
     }
 }

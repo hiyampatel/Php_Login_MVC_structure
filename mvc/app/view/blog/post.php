@@ -28,43 +28,51 @@ session_start();
     <div class='navbar'>
         <img src='/Images/logo-f.png'>
         <i class="fas fa-bars toggle"></i>
-        <ul class=''>
-            <li><a href="/home/index">Home</a></li>
-            <li><a href="" class="active">Blog</a></li>
-            <li><a href="/blog/post">All Post</a></li>
-            <li><a href="/blog/add">Add Post</a></li>
-            <li><a href="/home/aboutus">About Us</a></li>
-            <li><a href="/blog/logout">Logout</a></li>
-        </ul>
+        <?php
+            if(isset($_SESSION['submit']))
+            {
+                echo "<ul class=''>
+                        <li><a href='home/index' >Home</a></li>
+                        <li><a href='/blog/index'>Blog</a></li>
+                        <li><a href='' class='active'>All Post</a></li>
+                        <li><a href='/blog/add'>Add Post</a></li>
+                        <li><a href='/home/aboutus'>About Us</a></li>
+                        <li><a href='/blog/logout'>Logout</a></li>
+                      </ul>";
+            }
+            else
+            {
+                echo "<ul class=''>
+                        <li><a href='/home/index' >Home</a></li>
+                        <li><a href='' class='active'>All Post</a></li>
+                        <li><a href='/home/login'>Login</a></li>
+                        <li><a href='/home/signup'>Sign Up</a></li>
+                      </ul>";
+            }
+        ?>
     </div>
     <div class='head'>
         <div class='inner'>
         <br>
-            <h1>Welcome to the new world <br>of Blogging....</h1>
+            <h1>Keep updated with others <br>See what all got...</h1>
         </div>
     </div>
 
-    <div class="content">
-        <div class="user-info">
-            <h2><?php echo $_SESSION['Name'];?></h2>
-            <p><?php echo $_SESSION['Username'];?><br>
-            <?php echo $_SESSION['Email'];?></p>
-        </div>
-        <div class="post-list">
+    <div class="content-all">
+        <div class="post-list-all">
             <?php
                 if($data != 'No Posts')
                 {
                     while($row = $data->fetch_assoc())
                     {
-                        echo "<div class='list-item'>";
-                        echo "<p><b>".$row['Post']."</b></p><p>".$row['Date_Time']."</p>";
-                        echo "<button><a href='edit/".$row['Id']."'>Edit</a></button>";
-                        echo "<button><a onclick='return confirm(\"Are you sure you want to delete the post?\")' href='/blog/delete/".$row['Id']."'>Delete</a></button>";
+                        echo "<div class='list-item'>
+                            <p><b>".$row['Username']."</b></p>
+                            <p><b>".$row['Post']."</b></p><p>".$row['Date_Time'];
                         if($row['Edit_Time'] != NULL)
                         {
-                            echo "(Edited: ".$row['Edit_Time'].")<br>";
+                            echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(Edited: ".$row['Edit_Time'].")<br>";
                         }
-                        echo "</div>";
+                        echo "</p></div>";
                     }
                 }
                 else

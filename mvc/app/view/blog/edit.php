@@ -29,9 +29,10 @@ session_start();
         <i class="fas fa-bars toggle"></i>
         <ul>
             <li><a href="/home/index">Home</a></li>
-            <li><a href="/home/aboutus">About Us</a></li>
             <li><a href="/blog/index">Blog</a></li>
+            <li><a href="/blog/post">All Post</a></li>
             <li><a href="/blog/add">Add Post</a></li>
+            <li><a href="/home/aboutus">About Us</a></li>
             <li><a href="/blog/logout">Logout</a></li>
         </ul>
     </div>

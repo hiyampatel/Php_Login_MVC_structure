@@ -69,6 +69,23 @@ class Post extends Database
         return ;
     }
 
+
+    public function post_all()
+    {
+        $sql = "SELECT P.Id, L.Username, P.Post, P.Date_Time, P.Edit_Time FROM Post_Data AS P, Login_Detail AS L WHERE P.User_Id = L.Id ORDER BY P.Date_Time DESC";
+
+        $data = $this->conn->query($sql);
+
+        if($data->num_rows > 0)
+        {
+            return $data;
+        }
+        else
+        {
+            return 'No Posts';
+        }
+    }
+
 }
 
 ?>
