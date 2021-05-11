@@ -15,7 +15,8 @@ class Home extends Controller
     //Calling main index page
     public function index($name)
     {
-        header('Location: /blog/display');
+        $data = $this->user->home_data();
+        $this->view('home/index', $data);
     }
 
 

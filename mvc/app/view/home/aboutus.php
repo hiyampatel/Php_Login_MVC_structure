@@ -25,7 +25,7 @@
         <ul class=''>
             <li><a href="/home/index">Home</a></li>
             <li><a href="" class="active">About Us</a></li>
-            <li><a href="blog/index" >Blog</a></li>
+            <li><a href="/blog/index" >Blog</a></li>
             <li><a href="/blog/add">Add Post</a></li>
             <li><a href="/blog/logout">Logout</a></li>
         </ul>

@@ -69,21 +69,6 @@ class Post extends Database
         return ;
     }
 
-    public function home_data()
-    {
-        $sql = "SELECT * FROM Post_Data ORDER BY Date_Time DESC LIMIT 10";
-
-        $data = $this->conn->query($sql);
-
-        if($data->num_rows > 0)
-        {
-            return $data;
-        }
-        else
-        {
-            return 'No Posts';
-        }
-    }
 }
 
 ?>

@@ -139,6 +139,23 @@ class User extends Database
 
     }
 
+
+    public function home_data()
+    {
+        $sql = "SELECT P.Id, L.Name, P.Post, P.Date_Time, P.Edit_Time FROM Post_Data AS P, Login_Detail AS L WHERE P.User_Id = L.Id ORDER BY P.Date_Time DESC LIMIT 10";
+
+        $data = $this->conn->query($sql);
+
+        if($data->num_rows > 0)
+        {
+            return $data;
+        }
+        else
+        {
+            return 'No Posts';
+        }
+    }
+
 }
 
 ?>

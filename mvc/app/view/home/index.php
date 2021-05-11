@@ -56,6 +56,7 @@ session_start();
     </div>
 
     <div class="content">
+        <h1>Most trending posts...(top 10)</h1>
         <div class="post-list">
             <?php
                 if($data != 'No Posts')
@@ -63,13 +64,13 @@ session_start();
                     while($row = $data->fetch_assoc())
                     {
                         echo "<div class='list-item'>";
-                        $date = $row['Date_Time'];
-                        echo "<p><b>".$row['Post']."</b></p><p>".$row['Date_Time']."</p>";
+                        echo "<p><b>".$row['Name']."</b></p>";
+                        echo "<p><b>".$row['Post']."</b></p><p>".$row['Date_Time'];
                         if($row['Edit_Time'] != NULL)
                         {
-                            echo "(Edited: ".$row['Edit_Time'].")<br>";
+                            echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(Edited: ".$row['Edit_Time'].")";
                         }
-                        echo "</div>";
+                        echo "</p></div>";
                     }
                 }
                 else

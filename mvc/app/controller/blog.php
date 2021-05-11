@@ -62,11 +62,6 @@ Class Blog extends Controller
         header('Location: /home/index');
     }
 
-    public function display()
-    {
-        $data = $this->user_post->home_data();
-        $this->view('home/index', $data);
-    }
 }
 
 ?>
