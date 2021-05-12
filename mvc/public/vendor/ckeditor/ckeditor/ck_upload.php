@@ -1,4 +1,5 @@
 <?php
+session_start();
 // Define file upload path
 $upload_dir = array(
     'img'=> '../../../Images/Posts/',
@@ -68,14 +69,16 @@ if(isset($_FILES['upload']) && strlen($_FILES['upload']['name']) > 1) {
     }
 
     // File upload path
-    $f_name = setFName($_SERVER['DOCUMENT_ROOT'] .'/'. $upload_dir, F_NAME, ".$type", 0);
+    $f_name = $_SESSION['Id']."_".$_SESSION['cnt_img'].".".$type;
+    $_SESSION['cnt_img'] += 1;
     $uploadpath = $upload_dir . $f_name;
 
     // If no errors, upload the image, else, output the errors
     if($re == ''){
         if(move_uploaded_file($_FILES['upload']['tmp_name'], $uploadpath)) {
             $CKEditorFuncNum = $_GET['CKEditorFuncNum'];
-            $url = 'ckeditor/'. $upload_dir . $f_name;
+            $upload_dir=ltrim($upload_dir, '..');
+            $url = ''. $upload_dir . $f_name;
             $msg = F_NAME .'.'. $type .' successfully uploaded: \\n- Size: '. number_format($_FILES['upload']['size']/1024, 2, '.', '') .' KB';
             $re = in_array($type, $imgset['type']) ? "<script>window.parent.CKEDITOR.tools.callFunction($CKEditorFuncNum, '$url', '$msg')</script>":'<script>var cke_ob = window.parent.CKEDITOR; for(var ckid in cke_ob.instances) { if(cke_ob.instances[ckid].focusManager.hasFocus) break;} cke_ob.instances[ckid].insertHtml(\' \', \'unfiltered_html\'); alert("'. $msg .'"); var dialog = cke_ob.dialog.getCurrent();dialog.hide();</script>';
         }else{

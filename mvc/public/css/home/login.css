@@ -3,9 +3,12 @@ body
 {
 
     box-sizing: border-box;
-    font-size: 20px;
+    font-size: 18px;
     margin: 100px 0;
     font-family: sans-serif;
+    background-color: #728ba7;
+    background-image: url(../../Images/main-2.jpg);
+    background-size: cover;
 }
 
 .main-login, .main-signup
@@ -13,25 +16,30 @@ body
     max-width: 450px;
     min-width: 200px;
     text-align: center;
-    padding: 40px 15px 50px;
-    background-color: #A3ADB8;
+    padding: 20px 15px 50px;
+    background-color: #ffffff;
     margin: auto;
     box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.4), 0 15px 30px 0 rgba(0, 0, 0, 0.4);
 }
 
+.main-login a, .main-signup a
+{
+    color: #000000;
+}
 .main-signup
 {
     margin: -40px auto;
 }
 
-h1
+hr
 {
-    font-size: 65px;
+    border: #ededed 0.01px solid;
+    width: 100%;
 }
 
-a
+h1
 {
-    color: #ffffff;
+    font-size: 45px;
 }
 
 input[type=text], input[type=password], input[type=email]
@@ -46,29 +54,27 @@ input[type=submit]
 {
     padding: 5px 10px;
     font-size: 17px;
-    width: 300px;
-    border: 1px solid #000000;
+    width: 170px;
+    border: none;
     border-radius: 2px;
     font-weight: 900;
-    background-color: #000000;
+    background-color: #405060;
     color: #ffffff;
+    border: 1px solid #405060;/*17507a*/
 }
 
 .msg
 {
     text-align: center;
-    border: #ff0000 solid 1px;
-    background-color: rgba(255,0,0,0.1);
-    margin: 10px 35%;
-    padding: 10px 0;
+    margin: 0px 10%;
     color: #ff0000;
     font-size: 15px;
 }
 
 input[type=submit]:hover
 {
-    color: #000000;
-    background-color: #ffffff;
+    color: #ffffff;
+    background-color: #708090;
     border:#708090 1px solid;
 }
 
