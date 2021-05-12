@@ -68,7 +68,7 @@ session_start();
                     while($row = $data->fetch_assoc())
                     {
                         echo "<a href='/blog/post/".$row['Id']."'><div class='list-item'>";
-                        echo "<p><b>".$row['Post']."</b></p><p>".$row['Date_Time']."</p>";
+                        echo "<p>".$row['Post']."</p><p>".$row['Date_Time']."</p>";
                         echo "<button><a href='edit/".$row['Id']."'>Edit</a></button>";
                         echo "<button><a onclick='return confirm(\"Are you sure you want to delete the post?\")' href='/blog/delete/".$row['Id']."'>Delete</a></button>";
                         if($row['Edit_Time'] != NULL)

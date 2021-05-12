@@ -6,6 +6,13 @@
     <script src="https://kit.fontawesome.com/e07bdb484e.js" crossorigin="anonymous"></script>
 </head>
 <body>
+    <?php
+        if(isset($_SESSION['m']))
+        {
+            echo "<div class='msg'>".$_SESSION['m']."</div>";
+            session_destroy();
+        }
+    ?>
     <div class="main-signup">
         <h1>Sign Up </h1>
         <form method="POST" action="signup" enctype="multipart/form-data">
@@ -21,13 +28,6 @@
             <p>Have an account.  <a href="/home/login">Login</a></p>
             <p>Go to Home page.  <a href="/home/index">Home</a></p>
         </div>
-    </div><br><br>
-    <?php
-        if(isset($_SESSION['m']))
-        {
-            echo "<div class='msg'>".$_SESSION['m']."</div>";
-            session_destroy();
-        }
-    ?>
+    </div>
 </body>
 </html>

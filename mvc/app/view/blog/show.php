@@ -63,7 +63,7 @@ session_start();
             <?php
                 echo "<div class='list-item'>
                     <p>Username: <b>".$data['Username']."</b></p>
-                    <p>Post: <br><b>".$data['Post']."</b></p>";
+                    <p>Post: <br>".$data['Post']."</p>";
                 $date = explode(" ", $data['Date_Time']);
                 echo "<p>Post Date: ".$date[0]."</p>";
                 echo "<p>Post Time: ".$date[1]."</p>";

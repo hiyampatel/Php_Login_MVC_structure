@@ -67,7 +67,7 @@ session_start();
                     {
                         echo "<a href='/blog/post/".$row['Id']."'><div class='list-item'>
                             <p><b>@".$row['Username']."</b></p>
-                            <p><b>".$row['Post']."</b></p><p>".$row['Date_Time'];
+                            <p>".$row['Post']."</p><p>".$row['Date_Time'];
                         if($row['Edit_Time'] != NULL)
                         {
                             echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(Edited: ".$row['Edit_Time'].")<br>";

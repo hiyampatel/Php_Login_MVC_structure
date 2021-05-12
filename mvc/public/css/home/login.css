@@ -14,7 +14,7 @@ body
     min-width: 200px;
     text-align: center;
     padding: 40px 15px 50px;
-    background-color: #708090;
+    background-color: #A3ADB8;
     margin: auto;
     box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.4), 0 15px 30px 0 rgba(0, 0, 0, 0.4);
 }
@@ -67,7 +67,7 @@ input[type=submit]
 
 input[type=submit]:hover
 {
-    color: #708090;
+    color: #000000;
     background-color: #ffffff;
     border:#708090 1px solid;
 }

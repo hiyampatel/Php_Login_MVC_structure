@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,6 +10,9 @@
 
     <!--font awesome-->
     <script src="https://kit.fontawesome.com/e07bdb484e.js" crossorigin="anonymous"></script>
+
+    <!--ck editor-->
+    <script src="/vendor/ckeditor/ckeditor/ckeditor.js"></script>
 
     <!--google font-->
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -42,9 +46,15 @@
         <div class="add-form">
             <form method="post" action="add_post">
                 Add Post:<br>
-                <textarea name="blogpost" rows=4 required></textarea><br>
+                <textarea id="blogpost" name="blogpost" rows=4 required></textarea><br>
                 <input type="submit" name="submit" value="Submit">
             </form>
+            <script>
+                CKEDITOR.replace('blogpost',{
+                    filebrowserUploadUrl: '/vendor/ckeditor/ckeditor/ck_upload.php',
+                    filebrowserUploadMethod: 'form'
+                });
+            </script>
         </div>
     </div>
 </body>
