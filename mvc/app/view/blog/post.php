@@ -32,7 +32,7 @@ session_start();
             if(isset($_SESSION['submit']))
             {
                 echo "<ul class=''>
-                        <li><a href='home/index' >Home</a></li>
+                        <li><a href='/home/index' >Home</a></li>
                         <li><a href='/blog/index'>Blog</a></li>
                         <li><a href='' class='active'>All Post</a></li>
                         <li><a href='/blog/add'>Add Post</a></li>
