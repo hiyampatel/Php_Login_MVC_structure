@@ -1,0 +1,190 @@
+body
+{
+    margin: 0;
+    font-family: 'Catamaran', sans-serif;
+}
+
+.navbar
+{
+    background-color: #ffffff;
+}
+
+.navbar img
+{
+    height: 50px;
+    display: inline-block;
+    padding: 10px 0 0 7%;
+}
+
+.navbar a
+{
+    text-decoration: none;
+    color: #000000;
+}
+
+.navbar ul
+{
+    display: inline-block;
+    float: right;
+    margin: 0 7% 0 0;
+}
+
+.navbar li
+{
+    display: table-cell;
+    font-size: 20px;
+    padding: 20px;
+}
+
+.navbar li:hover
+{
+    font-weight: 700;
+}
+
+.navbar i
+{
+    display: none;
+}
+
+.active
+{
+    font-weight: 700;
+}
+
+.head
+{
+    background-image: url('../../Images/main-2.jpg');
+    background-size: cover;
+    margin: 0;
+    padding: 0;
+    height: 300px;
+}
+
+.inner
+{
+    background-color: rgba(0,0,0,0.6);
+    height: 100%;
+    color: #ffffff;
+}
+
+.inner h1
+{
+    font-size: 70px;
+    text-align: center;
+    margin-top: 50px;
+    font-weight: 700;
+}
+
+.active
+{
+    font-weight: 700;
+}
+
+.content
+{
+    margin: 50px 10%;
+    font-size: 20px;
+}
+
+.add-form
+{
+    margin: 20px 10%;
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.add-form textarea
+{
+    width: 100%;
+    font-size: 20px;
+}
+
+input[type=submit]
+{
+    padding: 2px 10px;
+    font-family: 'Catamaran', sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+}
+
+input[type=submit]:hover
+{
+    background-color: #708090;
+    color: #ffffff;
+}
+
+@media screen and (max-width:900px)
+{
+    .inner h1
+    {
+        font-size: 45px;
+        margin-top: 30px;
+    }
+
+    .navbar img
+    {
+        height:30px;
+    }
+
+    .head
+    {
+        height:250px;
+    }
+
+    .navbar i
+    {
+        display: inline-block;
+        float:right;
+        padding: 15px 10% 0 0;
+        cursor: pointer;
+    }
+
+    .navbar a
+    {
+        color: #ffffff;
+        font-size: 15px;
+    }
+
+    .navbar li
+    {
+        display: block;
+        background-color: #000000;
+        padding: 5px 20px;
+    }
+
+    .navbar li:hover
+    {
+        font-weight: 400;
+        background-color: #708090;
+        transition: 0.5s;
+    }
+
+    .navbar ul.show
+    {
+        display: block;
+    }
+
+    .navbar ul
+    {
+        display: none;
+        position: absolute;
+        top:40px;
+        right: 0;
+    }
+
+    .add-form, .add-form textarea
+    {
+        font-size: 15px;
+    }
+
+    .add-form input[type=submit]
+    {
+        font-size: 13px;
+        padding: 1px 5px;
+    }
+
+    .add-form
+    {
+        margin: 10px 10%;
+    }
+}

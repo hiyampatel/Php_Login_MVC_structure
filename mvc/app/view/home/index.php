@@ -30,15 +30,19 @@ session_start();
             if(isset($_SESSION['submit']))
             {
                 echo "<ul class=''>
-                        <li><a href='' class='active'>Home</a></li>
+                        <li><a href='#' class='active'>Home</a></li>
                         <li><a href='/blog/index'>Blog</a></li>
+                        <li><a href='/blog/post'>All Post</a></li>
+                        <li><a href='/blog/add'>Add Post</a></li>
+                        <li><a href='/home/aboutus'>About Us</a></li>
                         <li><a href='/blog/logout'>Logout</a></li>
                       </ul>";
             }
             else
             {
                 echo "<ul class=''>
-                        <li><a href='' class='active'>Home</a></li>
+                        <li><a href='#' class='active'>Home</a></li>
+                        <li><a href='/blog/post'>All Post</a></li>
                         <li><a href='/home/login'>Login</a></li>
                         <li><a href='/home/signup'>Sign Up</a></li>
                       </ul>";
@@ -46,16 +50,36 @@ session_start();
         ?>
     </div>
 
-    <div class='aboutus'>
-        <div class='head'>
-            <div class='inner'>
-            <br>
-                <h1>Create & Save your <br>Ideas & Thought</h1>
-            </div>
+    <div class='head'>
+        <div class='inner'>
+        <br>
+            <h1>Explore what others<br> are up to...</h1>
         </div>
-        <div class='main'>
-            <h1 class='aboutus-head'>About Us</h1>
-            <p>Blog is a site that allows you to save your personal ideas and thoughts into one place. You can post them onto your personal account. Fast and easy way to create store and see the post you created.</p><br>
+    </div>
+
+    <div class="content">
+        <h1>Most trending posts...(top 10)</h1>
+        <div class="post-list">
+            <?php
+                if($data != 'No Posts')
+                {
+                    while($row = $data->fetch_assoc())
+                    {
+                        echo "<a href='/blog/post/".$row['Id']."'><div class='list-item'>";
+                        echo "<p><b>@".$row['Username']."</b></p>";
+                        echo "<p>".$row['Post']."</p><p>".$row['Date_Time'];
+                        if($row['Edit_Time'] != NULL)
+                        {
+                            echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(Edited: ".$row['Edit_Time'].")";
+                        }
+                        echo "</p></div></a>";
+                    }
+                }
+                else
+                {
+                    echo $data. "<hr>";
+                }
+            ?>
         </div>
     </div>
 

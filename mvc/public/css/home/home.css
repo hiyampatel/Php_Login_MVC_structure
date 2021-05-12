@@ -57,7 +57,7 @@ body
     background-size: cover;
     margin: 0;
     padding: 0;
-    height: 400px;
+    height: 350px;
 }
 
 .inner
@@ -71,21 +71,28 @@ body
 {
     font-size: 70px;
     text-align: center;
-    margin-top: 78px;
-    font-weight: 400;
+    margin-top: 50px;
+    font-weight: 700;
 }
 
-.main p
+.content
 {
-    text-align: center;
-    padding: 0 25%;
+    margin: 50px 10% 80px;
     font-size: 20px;
 }
 
-.main h1
+.post-list a
 {
-    font-size: 40px;
-    text-align: center;
+    text-decoration: none;
+}
+
+.list-item
+{
+    padding: 0 5% 15px;
+    border: 1px #eeeeee solid;
+    margin-bottom: 15px;
+    color: #000000;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .footer
@@ -98,22 +105,12 @@ body
     padding: 15px 0;
 }
 
-@media screen and (max-width:650px)
+@media screen and (max-width:900px)
 {
     .inner h1
     {
         font-size: 45px;
         margin-top: 30px;
-    }
-
-    .main h1
-    {
-        font-size: 30px;
-    }
-
-    .main p, .footer
-    {
-        font-size: 15px;
     }
 
     .navbar img
@@ -165,5 +162,13 @@ body
         position: absolute;
         top:40px;
         right: 0;
+    }
+    .content
+    {
+        font-size: 15px;
+    }
+    .content h1
+    {
+        font-size: 30px;
     }
 }

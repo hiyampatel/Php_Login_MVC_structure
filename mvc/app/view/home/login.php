@@ -6,7 +6,7 @@
 </head>
 <body>
     <div class="main-login">
-        <h1>Login</h1>
+        <h1>Login</h1><hr><br>
         <form method="POST" action="login">
             Username: <input type="text" name="username" required><br><br>
             Password: <input type="password" name="password" required><br><br><br>
@@ -15,14 +15,15 @@
         <div>
             <p>OR<br><br>Signup to create an account.
             <a href="/home/signup"><b>Signup</b></a></p>
+            <p>Go to Home page. <b><a href="/home/index">Home</a></b></p>
         </div>
+        <?php
+            if(isset($_SESSION['m']))
+            {
+                echo "<div class='msg'><b>".$_SESSION['m']."</b></div>";
+                session_destroy();
+            }
+        ?>
     </div>
-    <?php
-        if(isset($_SESSION['m']))
-        {
-            echo "<div class='msg'>".$_SESSION['m']."</div>";
-            session_destroy();
-        }
-    ?>
 </body>
 </html>

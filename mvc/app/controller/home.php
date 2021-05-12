@@ -15,7 +15,8 @@ class Home extends Controller
     //Calling main index page
     public function index($name)
     {
-        $this->view('home/index');
+        $data = $this->user->home_data();
+        $this->view('home/index', $data);
     }
 
 
@@ -52,8 +53,8 @@ class Home extends Controller
         if(isset($_POST['submit']))
         {
             session_start();
-
             $result = $this->user->check_user($_POST);
+
             if($result == 'T')
             {
                 $_SESSION['m'] = 'User already exist!';
@@ -78,6 +79,11 @@ class Home extends Controller
             session_start();
             $this->view('home/signup');
         }
+    }
+
+    public function aboutus()
+    {
+        $this->view('home/aboutus');
     }
 }
 

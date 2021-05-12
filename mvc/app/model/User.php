@@ -7,9 +7,12 @@ class User extends Database
     public function check_user($post_data)
     {
         session_start();
-        $sql = 'SELECT * FROM Login_Detail WHERE Username = "'.$post_data['username'].'"';
+        $sql = 'SELECT * FROM Login_Detail WHERE Username = ?';
 
-        $data = $this->conn->query($sql);
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bind_param("s", $post_data['username']);
+        $stmt->execute();
+        $data = $stmt->get_result();
 
         if($data->num_rows > 0)
         {
@@ -89,11 +92,41 @@ class User extends Database
             return 'F';
         }
 
-        $sql = 'INSERT INTO Login_Detail(Name, Username, Email, Password) VALUES ("'.$post_data['name'].'", "'.$post_data['username'].'", "'.$post_data['email'].'", "'.$post_data['password'].'")';
-
-        if($this->conn->query($sql) === True)
+        //check for image and upload it to Images/Profile folder
+        $position = 'Images/' .  basename($_FILES["file"]["name"]);
+        $type = $_FILES["file"]["type"];
+        $img_path = '/public/Images/Profile/'.$post_data['username'].'.jpg';
+        if(!empty($_FILES["file"]))
         {
-            $_SESSION['m'] = 'Sucessfully created account.';
+            if(preg_match("/Image/i", $type) == 0)
+            {
+                $_SESSION['m'] = 'Not an image file!';
+                return 'F';
+            }
+            else
+            {
+                if (copy($_FILES["file"]["tmp_name"], __DIR__.'/../..'.$img_path)===False)
+                {
+                    $_SESSION['m'] = 'Could not upload profile image. Try again.';
+                    return 'F';
+                }
+            }
+        }
+        else
+        {
+            $img_path = NULL;
+        }
+
+
+
+        $sql = 'INSERT INTO Login_Detail(Name, Username, Email, Password, Photo) VALUES (?,?,?,?,?)';
+
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bind_param("sssss", $post_data['name'], $post_data['username'], $post_data['email'], $post_data['password'], $img_path);
+
+        if($stmt->execute() === True)
+        {
+            unset($_SESSION['m']);
             return 'T';
         }
         else
@@ -130,6 +163,23 @@ class User extends Database
         }
         return 'True';
 
+    }
+
+
+    public function home_data()
+    {
+        $sql = "SELECT P.Id, L.Username, P.Post, P.Date_Time, P.Edit_Time FROM Post_Data AS P, Login_Detail AS L WHERE P.User_Id = L.Id ORDER BY P.Date_Time DESC LIMIT 10";
+
+        $data = $this->conn->query($sql);
+
+        if($data->num_rows > 0)
+        {
+            return $data;
+        }
+        else
+        {
+            return 'No Posts';
+        }
     }
 
 }

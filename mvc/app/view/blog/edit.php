@@ -30,6 +30,9 @@ session_start();
         <ul>
             <li><a href="/home/index">Home</a></li>
             <li><a href="/blog/index">Blog</a></li>
+            <li><a href="/blog/post">All Post</a></li>
+            <li><a href="/blog/add">Add Post</a></li>
+            <li><a href="/home/aboutus">About Us</a></li>
             <li><a href="/blog/logout">Logout</a></li>
         </ul>
     </div>
@@ -44,7 +47,7 @@ session_start();
         <form method="POST" action=<?php echo "/blog/update/".$data['Id'];?>>
             <textarea name="post" rows=4><?php echo $data['Post'];?></textarea><br><br>
             <input type="submit" name="submit" value="Update">
-            <button><a href=<?php echo "/blog/delete/".$data['Id'];?>>Delete</a>
+            <button><a onclick='return confirm("Are you sure you want to delete the post?")' href=<?php echo "/blog/delete/".$data['Id'];?>>Delete</a>
             </button>
             <button><a href="/blog/index">Cancel</a></button>
         </form>

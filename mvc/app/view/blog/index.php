@@ -31,33 +31,51 @@ session_start();
         <ul class=''>
             <li><a href="/home/index">Home</a></li>
             <li><a href="" class="active">Blog</a></li>
+            <li><a href="/blog/post">All Post</a></li>
+            <li><a href="/blog/add">Add Post</a></li>
+            <li><a href="/home/aboutus">About Us</a></li>
             <li><a href="/blog/logout">Logout</a></li>
         </ul>
     </div>
     <div class='head'>
         <div class='inner'>
         <br>
-            <h1>Creating & Viewing<br> Posts</h1>
+            <h1>Welcome to the new world <br>of Blogging....</h1>
         </div>
     </div>
 
     <div class="content">
+        <div class="user-info">
+            <?php
+            if($_SESSION['Photo']==NULL)
+            {
+                echo "<div class='user-pic'><img src='../../../Images/profile.png'></div>";
+            }
+            else
+            {
+                $path = ltrim($_SESSION['Photo'], '/public');
+                echo '<div class="user-pic"><img src="../../../'.$path.'"></div>';
+            }
+            ?>
+            <h2><?php echo $_SESSION['Name'];?></h2>
+            <p><?php echo $_SESSION['Username'];?><br>
+            <?php echo $_SESSION['Email'];?></p>
+        </div>
         <div class="post-list">
             <?php
                 if($data != 'No Posts')
                 {
                     while($row = $data->fetch_assoc())
                     {
-                        echo "<div class='list-item'>";
-                        $date = $row['Date_Time'];
-                        echo "<p><b>".$row['Post']."</b></p><p>".$row['Date_Time']."</p>";
+                        echo "<a href='/blog/post/".$row['Id']."'><div class='list-item'>";
+                        echo "<p>".$row['Post']."</p><p>".$row['Date_Time']."</p>";
                         echo "<button><a href='edit/".$row['Id']."'>Edit</a></button>";
-                        echo "<button><a href='/blog/delete/".$row['Id']."'>Delete</a></button>";
+                        echo "<button><a onclick='return confirm(\"Are you sure you want to delete the post?\")' href='/blog/delete/".$row['Id']."'>Delete</a></button>";
                         if($row['Edit_Time'] != NULL)
                         {
                             echo "(Edited: ".$row['Edit_Time'].")<br>";
                         }
-                        echo "</div>";
+                        echo "</div></a>";
                     }
                 }
                 else
@@ -68,17 +86,5 @@ session_start();
         </div>
     </div>
 
-    <div class="bottom">
-        <div class="square">
-            <i class="fas fa-sort-down" ></i>
-        </div>
-        <div class="add-form">
-            <form method="post" action="post">
-                Add Post:<br>
-                <textarea name="blogpost" rows=1 required></textarea><br>
-                <input type="submit" name="submit" value="Submit">
-            </form>
-        </div>
-    </div>
 </body>
 </html>

@@ -19,13 +19,6 @@ Class Blog extends Controller
         $this->view('blog/index', $data);
     }
 
-    //Adding the post
-    public function post()
-    {
-        $data = $this->user_post->add_post($_POST);
-        $this->view('blog/index', $data);
-    }
-
     //getting the data of the post and sending it to edit page
     public function edit($name = 1)
     {
@@ -40,12 +33,25 @@ Class Blog extends Controller
         header('Location: /blog/index');
     }
 
-
+    //delete the
     public function delete($id)
     {
         $this->user_post->delete_post($id);
         header('Location: /blog/index');
 
+    }
+
+    //Redirecting to add page
+    public function add()
+    {
+        $this->view('blog/add');
+    }
+
+    //Adding the post
+    public function add_post()
+    {
+        $data = $this->user_post->add_post($_POST);
+        $this->view('blog/index', $data);
     }
 
     public function logout()
@@ -54,7 +60,20 @@ Class Blog extends Controller
         unset($_SESSION['submit']);
         unset($_SESSION['m']);
         header('Location: /home/index');
-        //$this->view('home/index');
+    }
+
+    public function post($id)
+    {
+        if(empty($id))
+        {
+            $data = $this->user_post->post_all();
+            $this->view('blog/post', $data);
+        }
+        else
+        {
+            $data = $this->user_post->get_data($id);
+            $this->view('blog/show', $data);
+        }
     }
 
 }
