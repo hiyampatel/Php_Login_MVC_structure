@@ -14,6 +14,9 @@ session_start();
     <!--font awesome-->
     <script src="https://kit.fontawesome.com/e07bdb484e.js" crossorigin="anonymous"></script>
 
+    <!--ck editor-->
+    <script src="/vendor/ckeditor/ckeditor/ckeditor.js"></script>
+
     <!--google font-->
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Catamaran:wght@100;400;800&display=swap" rel="stylesheet">
@@ -45,12 +48,19 @@ session_start();
 
     <div class="content">
         <form method="POST" action=<?php echo "/blog/update/".$data['Id'];?>>
-            <textarea name="post" rows=4><?php echo $data['Post'];?></textarea><br><br>
+            <textarea id='post' name="post" rows=4><?php echo $data['Post'];?></textarea><br><br>
             <input type="submit" name="submit" value="Update">
             <button><a onclick='return confirm("Are you sure you want to delete the post?")' href=<?php echo "/blog/delete/".$data['Id'];?>>Delete</a>
             </button>
             <button><a href="/blog/index">Cancel</a></button>
+            <script>
+                CKEDITOR.replace('post',{
+                    filebrowserUploadUrl: '/vendor/ckeditor/ckeditor/ck_upload.php',
+                    filebrowserUploadMethod: 'form'
+                });
+            </script>
         </form>
+
     </div>
 </body>
 </html>

@@ -93,10 +93,9 @@ class User extends Database
         }
 
         //check for image and upload it to Images/Profile folder
-        $position = 'Images/' .  basename($_FILES["file"]["name"]);
         $type = $_FILES["file"]["type"];
         $img_path = '/Images/Profile/'.$post_data['username'].'.jpg';
-        if(!empty($_FILES["file"]))
+        if($_FILES['file']['type'] != NULL)
         {
             if(preg_match("/Image/i", $type) == 0)
             {

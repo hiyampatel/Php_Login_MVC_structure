@@ -6,15 +6,15 @@
     <script src="https://kit.fontawesome.com/e07bdb484e.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <?php
-        if(isset($_SESSION['m']))
-        {
-            echo "<div class='msg'>".$_SESSION['m']."</div>";
-            session_destroy();
-        }
-    ?>
     <div class="main-signup">
         <h1>Sign Up </h1><hr><br>
+        <?php
+            if(isset($_SESSION['m']))
+            {
+                echo "<div class='msg'>".$_SESSION['m']."</div>";
+                session_destroy();
+            }
+        ?>
         <form method="POST" action="signup" enctype="multipart/form-data">
             Name:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="text" name="name" required><br><br>
             Username: <input type="text" name="username" required><br><br>

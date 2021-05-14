@@ -63,10 +63,10 @@ class Post extends Database
             return ;
         }
 
-        $sql = "UPDATE Post_Data SET Post=? Edit_Time=NOW() WHERE Id=?";
+        $sql = "UPDATE Post_Data SET Post=?, Edit_Time=NOW() WHERE Id=?";
 
         $stmt = $this->conn->prepare($sql);
-        $stmt->bind_param("si", $post_data['Post'], $id[0]);
+        $stmt->bind_param("si", $post_data['post'], $id[0]);
         $stmt->execute();
         return ;
     }
