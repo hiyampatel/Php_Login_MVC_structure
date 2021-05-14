@@ -53,13 +53,13 @@ session_start();
             }
             else
             {
-                $path = ltrim($_SESSION['Photo'], '/public');
-                echo '<div class="user-pic"><img src="../../../'.$path.'"></div>';
+                echo '<div class="user-pic"><img src="../../..'.$_SESSION['Photo'].'"></div>';
             }
             ?>
             <h2><?php echo $_SESSION['Name'];?></h2>
             <p><?php echo $_SESSION['Username'];?><br>
             <?php echo $_SESSION['Email'];?></p>
+            <p><button><a href="/home/userinfo">Edit</a></button></p>
         </div>
         <div class="post-list">
             <?php

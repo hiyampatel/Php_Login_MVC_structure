@@ -54,6 +54,7 @@ Class Blog extends Controller
         $this->view('blog/index', $data);
     }
 
+    //  Log out from a session
     public function logout()
     {
         session_start();
@@ -62,6 +63,7 @@ Class Blog extends Controller
         header('Location: /home/index');
     }
 
+    //for fetching and displaying all post
     public function post($id)
     {
         if(empty($id))

@@ -85,6 +85,26 @@ class Home extends Controller
     {
         $this->view('home/aboutus');
     }
+
+    public function userinfo()
+    {
+        if($_POST['submit'] == 'Change')
+        {
+            $result = $this->user->user_data($_POST);
+            if($result == 'F')
+            {
+                $this->view('home/userinfo');
+            }
+            else
+            {
+                header('Location: /blog/index');
+            }
+        }
+        else
+        {
+            $this->view('home/userinfo');
+        }
+    }
 }
 
 ?>

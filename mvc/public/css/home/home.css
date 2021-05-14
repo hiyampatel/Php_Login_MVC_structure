@@ -51,13 +51,32 @@ body
     font-weight: 700;
 }
 
-.head
+.head, .head1
 {
     background-image: url('../../Images/main-2.jpg');
     background-size: cover;
     margin: 0;
     padding: 0;
     height: 350px;
+}
+
+.head1
+{
+    height: 250px;
+}
+
+.user
+{
+    position: relative;
+}
+
+.user .user-pic img
+{
+    max-width: 250px;
+    max-height: 250px;
+    position: absolute;
+    right: 10%;
+    top: 40px;
 }
 
 .inner
@@ -81,18 +100,50 @@ body
     font-size: 20px;
 }
 
+.content .post-list img
+{
+    padding: 0;
+    margin-top: -15px;
+}
+
 .post-list a
 {
     text-decoration: none;
 }
 
-.list-item
+.list-item, .content .user
 {
     padding: 0 5% 15px;
     border: 1px #eeeeee solid;
     margin-bottom: 15px;
     color: #000000;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.content .user
+{
+    padding: 20px 10%;
+}
+
+.content .user input[type=submit]
+{
+    text-decoration: none;
+    color: #ffffff;
+    background-color: #000000;
+    border-radius: 2px;
+    padding: 7px 15px;
+    border: none;
+}
+
+.content .user input[type=submit]:hover
+{
+    background-color: #708090;
+    color: #ffffff;
+}
+
+.user input[type=text], .user input[type=email], .user input[type=file]
+{
+    font-size: 18px;
 }
 
 .footer
