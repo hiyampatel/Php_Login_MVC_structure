@@ -1,5 +1,30 @@
 <?php
 session_start();
+include(__DIR__.'/../../core/Google.php');
+
+
+$code = explode('=', $_GET['url']);
+if(isset($code[1]))
+{
+    $token = $google_client->fetchAccessTokenWithAuthCode($code);
+
+    //To check for error
+    if(!isset($token['error']))
+    {
+        //Set the access token used for requests
+        $google_client->setAccessToken($token['access_token']);
+
+        //Store "access_token" value in $_SESSION variable for future use.
+        $_SESSION['access_token'] = $token['access_token'];
+
+        //Create Object of Google Service OAuth 2 class
+        $google_service = new Google_Service_Oauth2($google_client);
+
+        //Getting user profile data from google
+        $data = $google_service->userinfo->get();
+    }
+}
+
 ?>
 
 <!DOCTYPE html>
