@@ -23,9 +23,10 @@ class Home extends Controller
     //Handle the Login functionality
     //If redirected after form submission then check for user data into database and redirect to home page
     //Else display Login page
-    public function login()
+    public function login($code)
     {
-        session_start();
+
+
         if(isset($_POST['submit']))
         {
             $result =$this->user->check_user($_POST);

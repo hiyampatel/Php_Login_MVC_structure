@@ -1,3 +1,7 @@
+<?php
+include(__DIR__.'/../../core/Google.php');
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,7 +16,18 @@
             Password: <input type="password" name="password" required><br><br><br>
             <input type="submit" name="submit" value="Login"><br><br>
         </form>
+
         <?php
+            if(!isset($_SESSION['access_token']))
+            {
+                $login_button = '<a href="'.$google_client->createAuthUrl().'">Login using Google</a>';
+                echo "<button>".$login_button."</button><br>";
+            }
+            else
+            {
+                header('Location: /blog/index');
+            }
+
             if(isset($_SESSION['m']))
             {
                 echo "<div class='msg'><b>".$_SESSION['m']."</b></div>";
