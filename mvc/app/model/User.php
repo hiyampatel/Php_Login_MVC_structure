@@ -50,7 +50,7 @@ class User extends Database
             return 'F';
         }
 
-        //password length
+        //password length and constarins
         if((strlen($post_data['password'])<8))
         {
             $_SESSION['m'] = 'Password must be more than 8 characters';
@@ -93,10 +93,9 @@ class User extends Database
         }
 
         //check for image and upload it to Images/Profile folder
-        $position = 'Images/' .  basename($_FILES["file"]["name"]);
         $type = $_FILES["file"]["type"];
-        $img_path = '/public/Images/Profile/'.$post_data['username'].'.jpg';
-        if(!empty($_FILES["file"]))
+        $img_path = '/Images/Profile/'.$post_data['username'].'.jpg';
+        if($_FILES['file']['type'] != NULL)
         {
             if(preg_match("/Image/i", $type) == 0)
             {
@@ -105,7 +104,7 @@ class User extends Database
             }
             else
             {
-                if (copy($_FILES["file"]["tmp_name"], __DIR__.'/../..'.$img_path)===False)
+                if (copy($_FILES["file"]["tmp_name"], __DIR__.'/../../public'.$img_path)===False)
                 {
                     $_SESSION['m'] = 'Could not upload profile image. Try again.';
                     return 'F';
@@ -165,7 +164,7 @@ class User extends Database
 
     }
 
-
+    //display data onto home page
     public function home_data()
     {
         $sql = "SELECT P.Id, L.Username, P.Post, P.Date_Time, P.Edit_Time FROM Post_Data AS P, Login_Detail AS L WHERE P.User_Id = L.Id ORDER BY P.Date_Time DESC LIMIT 10";
@@ -180,6 +179,57 @@ class User extends Database
         {
             return 'No Posts';
         }
+    }
+
+    //For updating the user info or profile photo
+    public function user_data($post_data)
+    {
+        session_start();
+        $sql = "UPDATE Login_Detail SET Name=?, Username=?, Email=? WHERE Username=?";
+
+        //setting file path and changing the profile photo
+        //deleting the old photo if exist by same name
+        //saving new photo with same name
+        $type = $_FILES["file"]["type"];
+        $img_path = '/Images/Profile/'.$post_data['username'].'.jpg';
+        if($_FILES['file']['type'] != NULL)
+        {
+            if(preg_match("/Image/i", $type) == 0)
+            {
+                $_SESSION['m'] = 'Not an image file!';
+                return 'F';
+            }
+            else
+            {
+                //if photo with same name exist then delete it
+                if (file_exists(__DIR__.'/../../public'.$img_path))
+                {
+                    unlink(__DIR__.'/../../public'.$img_path);
+                }
+                //if old photo with old username exist
+                if (file_exists(__DIR__.'/../../public'.$_SESSION['Photo']))
+                {
+                    unlink(__DIR__.'/../../public'.$img_path);
+                    $_SESSION['Photo'] = $img_path;
+                }
+
+                if (move_uploaded_file($_FILES["file"]["tmp_name"], __DIR__.'/../../public'.$img_path)===False)
+                {
+                    $_SESSION['m'] = 'Could not upload profile image. Try again.';
+                    return 'F';
+                }
+            }
+            $_SESSION['Name'] = $post_data['name'];
+            $_SESSION['Username'] = $post_data['username'];
+            $_SESSION['Email'] = $post_data['email'];
+
+        }
+
+        //updating the new user info into database
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bind_param('ssss', $post_data['name'], $post_data['username'], $post_data['email'], $post_data['username']);
+        $stmt->execute();
+        return 'T';
     }
 
 }

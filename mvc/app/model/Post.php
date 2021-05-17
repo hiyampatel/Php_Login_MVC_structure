@@ -63,10 +63,10 @@ class Post extends Database
             return ;
         }
 
-        $sql = "UPDATE Post_Data SET Post=? Edit_Time=NOW() WHERE Id=?";
+        $sql = "UPDATE Post_Data SET Post=?, Edit_Time=NOW() WHERE Id=?";
 
         $stmt = $this->conn->prepare($sql);
-        $stmt->bind_param("si", $post_data['Post'], $id[0]);
+        $stmt->bind_param("si", $post_data['post'], $id[0]);
         $stmt->execute();
         return ;
     }
@@ -75,6 +75,33 @@ class Post extends Database
     //Delete the post
     public function delete_post($id)
     {
+        //fetching the post data
+        $sql = "SELECT * FROM Post_Data WHERE Id=?";
+
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bind_param('i', $id[0]);
+        $stmt->execute();
+        $data = $stmt->get_result();
+        $row = $data->fetch_assoc();
+
+        //getting the url of post images if any
+        $dom = new domDocument;
+        $dom->loadHTML($row['Post']);
+        $dom->preserveWhiteSpace = false;
+        $images = $dom->getElementsByTagName('img');
+
+        //deleting the post images from the folder
+        foreach ($images as $image)
+        {
+            $src = $image->getAttribute('src');
+            $src = ltrim($src, '/../..');
+            if (file_exists(__DIR__.'/../../public/'.$src))
+            {
+                unlink(__DIR__.'/../../public/'.$src);
+            }
+        }
+
+        //deleting post data
         $sql = "DELETE FROM Post_Data WHERE Id=?";
 
         $stmt = $this->conn->prepare($sql);
@@ -83,7 +110,7 @@ class Post extends Database
         return ;
     }
 
-
+    //displaying all post
     public function post_all()
     {
         $sql = "SELECT P.Id, L.Username, P.Post, P.Date_Time, P.Edit_Time FROM Post_Data AS P, Login_Detail AS L WHERE P.User_Id = L.Id ORDER BY P.Date_Time DESC";
