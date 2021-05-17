@@ -120,6 +120,35 @@ body
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
+.list-item
+{
+    position: relative;
+}
+
+.list-item .text_post
+{
+    width: 75%;
+    display: inline-block;
+}
+
+.list-item .img_post
+{
+    width: 20%;
+    margin-left: 4%;
+    margin-top: 30px;
+    display: inline-block;
+    position: absolute;
+    right: 20px;
+    top: 0;
+    float: right;
+}
+
+.img_post img
+{
+    max-width: 200px;
+    max-height: 200px;
+}
+
 .content .user
 {
     padding: 20px 10%;
@@ -144,6 +173,12 @@ body
 .user input[type=text], .user input[type=email], .user input[type=file]
 {
     font-size: 18px;
+}
+
+.user .red
+{
+    color: #ff0000;
+    font-size: 17px;
 }
 
 .footer

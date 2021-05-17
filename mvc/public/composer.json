@@ -1,7 +1,8 @@
 {
 
     "require": {
-        "ckeditor/ckeditor": "4.*"
+        "ckeditor/ckeditor": "4.*",
+        "google/apiclient": "^2.7"
     },
 
 

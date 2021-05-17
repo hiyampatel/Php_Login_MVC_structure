@@ -44,9 +44,11 @@
     </div>
     <div class="content">
         <div class="add-form">
-            <form method="post" action="add_post">
-                Add Post:<br>
+            <form method="post" action="add_post" enctype="multipart/form-data">
+                <b>Add Post Title</b>: <span class="red">*</span>&nbsp;<input type="text" name="title" required><br><br>
+                <b>Add Content</b>: <span class="red">*</span><br>
                 <textarea id="blogpost" name="blogpost" rows=4 required></textarea><br>
+                <b>Add Image</b>: <input type="file" name="file"><br><br>
                 <input type="submit" name="submit" value="Submit">
             </form>
             <script>
@@ -55,6 +57,13 @@
                     filebrowserUploadMethod: 'form'
                 });
             </script>
+            <?php
+            if(isset($_SESSION['m']))
+            {
+                echo "<div class='msg'><b>".$_SESSION['m']."</b></div>";
+                session_destroy();
+            }
+        ?>
         </div>
     </div>
 </body>

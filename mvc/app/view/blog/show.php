@@ -61,17 +61,26 @@ session_start();
     <div class="content-all">
         <div class="post-list-all">
             <?php
-                echo "<div class='list-item'>
-                    <p>Username: <b>".$data['Username']."</b></p>
-                    <p>Post: <br>".$data['Post']."</p>";
-                $date = explode(" ", $data['Date_Time']);
-                echo "<p>Post Date: ".$date[0]."</p>";
-                echo "<p>Post Time: ".$date[1]."</p>";
+                echo "<div class='list-item'>";
+                echo "<div class='text_post-all'>";
+                echo "<p><b>Username</b>: &nbsp;@".$data['Username']."</p>";
+                echo "<p><b>Post Title</b>: &nbsp;".$data['Title']."</p>";
+                echo "<p><b>Post Content</b>: &nbsp;".$data['Post']."</p><p><b>Post Time</b>: &nbsp;".$data['Date_Time'];
                 if($data['Edit_Time'] != NULL)
                 {
-                    echo "<p>Edited: ".$data['Edit_Time']."</p>";
+                    echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(Edited: ".$data['Edit_Time'].")<br>";
                 }
-                echo "</div>";
+                echo "</p></div>
+                    <div class='img_post-all'><b>Post Image</b><br><br>";
+                if($data['Image'] == NULL)
+                {
+                    echo "<img src='../../../Images/post_img.png'>";
+                }
+                else
+                {
+                    echo "<img src='../../..".$data['Image']."'>";
+                }
+                echo "</div></div>";
             ?>
         </div>
     </div>

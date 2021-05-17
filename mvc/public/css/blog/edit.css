@@ -99,6 +99,11 @@ button a
     color: #ffffff;
 }
 
+.red
+{
+    color: #ff0000;
+}
+
 .content button:hover, input[type=submit]:hover
 {
     background-color: #708090;

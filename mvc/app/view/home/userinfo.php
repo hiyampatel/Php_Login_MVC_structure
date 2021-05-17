@@ -76,11 +76,11 @@ session_start();
                     }
                 ?><br>
                 <input type="submit" name="submit" value="Change"><br>
-            </form>
+            </form><br>
             <?php
                 if(isset($_SESSION['m']))
                 {
-                    echo $_SESSION['m'];
+                    echo "<div class='red'>".$_SESSION['m']."</div>";
                     unset($_SESSION['m']);
                 }
             ?>

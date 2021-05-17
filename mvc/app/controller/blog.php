@@ -29,6 +29,7 @@ Class Blog extends Controller
     //update the post
     public function update($id)
     {
+        session_start();
         $this->user_post->update_post($_POST, $id);
         header('Location: /blog/index');
     }
@@ -50,8 +51,16 @@ Class Blog extends Controller
     //Adding the post
     public function add_post()
     {
+        session_start();
         $data = $this->user_post->add_post($_POST);
-        $this->view('blog/index', $data);
+        if($data == 'F')
+        {
+            $this->view('blog/add');
+        }
+        else
+        {
+            $this->view('blog/index', $data);
+        }
     }
 
     //  Log out from a session

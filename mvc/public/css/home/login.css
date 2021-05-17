@@ -31,6 +31,20 @@ body
     margin: -40px auto;
 }
 
+.red
+{
+    color: #ff0000;
+}
+
+.main-signup .password-require
+{
+    text-align: left;
+    color: #555555;
+    font-size: 13px;
+    padding-left: 37%;
+    padding-top: 5px;
+}
+
 hr
 {
     border: #ededed 0.01px solid;

@@ -58,7 +58,7 @@ session_start();
     </div>
 
     <div class="content">
-        <h1>Most trending posts...(top 10)</h1>
+        <h1>Latest 10 Posts</h1>
         <div class="post-list">
             <?php
                 if($data != 'No Posts')
@@ -66,13 +66,25 @@ session_start();
                     while($row = $data->fetch_assoc())
                     {
                         echo "<a href='/blog/post/".$row['Id']."'><div class='list-item'>";
-                        echo "<p><b>@".$row['Username']."</b></p>";
+                        echo "<div class='text_post'>";
+                        echo "<p>@".$row['Username']."</p>";
+                        echo "<h2>".$row['Title']."</h2>";
                         echo "<p>".$row['Post']."</p><p>".$row['Date_Time'];
                         if($row['Edit_Time'] != NULL)
                         {
                             echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(Edited: ".$row['Edit_Time'].")";
                         }
-                        echo "</p></div></a>";
+                        echo "</p></div>
+                            <div class='img_post'>";
+                        if($row['Image'] == NULL)
+                        {
+                            echo "<img src='../../../Images/post_img.png'>";
+                        }
+                        else
+                        {
+                            echo "<img src='../../..".$row['Image']."'>";
+                        }
+                        echo "</div></div></a>";
                     }
                 }
                 else
