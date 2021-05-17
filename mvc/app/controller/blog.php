@@ -29,6 +29,7 @@ Class Blog extends Controller
     //update the post
     public function update($id)
     {
+        session_start();
         $this->user_post->update_post($_POST, $id);
         header('Location: /blog/index');
     }

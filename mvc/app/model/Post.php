@@ -136,7 +136,7 @@ class Post extends Database
         $stmt = $this->conn->prepare($sql);
         $stmt->bind_param("ssi", $post_data['post'], $post_data['title'], $id[0]);
         $stmt->execute();
-        return ;
+        //return ;
     }
 
 

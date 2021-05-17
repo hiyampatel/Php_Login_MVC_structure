@@ -47,7 +47,7 @@ session_start();
     </div>
 
     <div class="content">
-        <form method="POST" action=<?php echo "/blog/update/".$data['Id'];?>>
+        <form method="POST" enctype='multipart/form-data' action=<?php echo "/blog/update/".$data['Id'];?>>
             <b>Edit Post Title</b>: <span class="red">*</span>&nbsp;<input type="text" name="title" value='<?php echo $data["Title"];?>' required><br><br>
             <b>Edit Content</b>: <span class="red">*</span><br>
             <textarea id='post' name="post" rows=4><?php echo $data['Post'];?></textarea><br><br>
