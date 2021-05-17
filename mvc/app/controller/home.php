@@ -70,7 +70,7 @@ class Home extends Controller
                 }
                 else
                 {
-                    header('Location: /home/index');
+                    header('Location: /home/login');
                 }
             }
         }

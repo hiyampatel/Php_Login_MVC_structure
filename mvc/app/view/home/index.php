@@ -58,7 +58,7 @@ session_start();
     </div>
 
     <div class="content">
-        <h1>Most trending posts...(top 10)</h1>
+        <h1>Latest 10 Posts</h1>
         <div class="post-list">
             <?php
                 if($data != 'No Posts')
