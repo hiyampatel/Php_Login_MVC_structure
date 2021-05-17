@@ -167,7 +167,7 @@ class User extends Database
     //display data onto home page
     public function home_data()
     {
-        $sql = "SELECT P.Id, L.Username, P.Post, P.Date_Time, P.Edit_Time FROM Post_Data AS P, Login_Detail AS L WHERE P.User_Id = L.Id ORDER BY P.Date_Time DESC LIMIT 10";
+        $sql = "SELECT P.Id, L.Username, P.Post, P.Date_Time, P.Edit_Time, P.Title, P.Image FROM Post_Data AS P, Login_Detail AS L WHERE P.User_Id = L.Id ORDER BY P.Date_Time DESC LIMIT 10";
 
         $data = $this->conn->query($sql);
 
@@ -191,7 +191,8 @@ class User extends Database
         //deleting the old photo if exist by same name
         //saving new photo with same name
         $type = $_FILES["file"]["type"];
-        $img_path = '/Images/Profile/'.$post_data['username'].'.jpg';
+        $ext = explode('.', $_FILES["file"]['name']);
+        $img_path = '/Images/Profile/'.$post_data['username'].'.'.$ext[1];
         if($_FILES['file']['type'] != NULL)
         {
             if(preg_match("/Image/i", $type) == 0)

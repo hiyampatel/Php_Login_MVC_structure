@@ -65,14 +65,26 @@ session_start();
                 {
                     while($row = $data->fetch_assoc())
                     {
-                        echo "<a href='/blog/post/".$row['Id']."'><div class='list-item'>
-                            <p><b>@".$row['Username']."</b></p>
-                            <p>".$row['Post']."</p><p>".$row['Date_Time'];
+                        echo "<a href='/blog/post/".$row['Id']."'><div class='list-item'>";
+                        echo "<div class='text_post-all'>";
+                        echo "<p>@".$row['Username']."</p>";
+                        echo "<h2>".$row['Title']."</h2>";
+                        echo "<p>".$row['Post']."</p><p>".$row['Date_Time'];
                         if($row['Edit_Time'] != NULL)
                         {
                             echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(Edited: ".$row['Edit_Time'].")<br>";
                         }
-                        echo "</p></div></a>";
+                        echo "</p></div>
+                            <div class='img_post-all'>";
+                        if($row['Image'] == NULL)
+                        {
+                            echo "<img src='../../../Images/post_img.png'>";
+                        }
+                        else
+                        {
+                            echo "<img src='../../..".$row['Image']."'>";
+                        }
+                        echo "</div></div></a>";
                     }
                 }
                 else

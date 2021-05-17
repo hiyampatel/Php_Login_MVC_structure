@@ -48,7 +48,21 @@ session_start();
 
     <div class="content">
         <form method="POST" action=<?php echo "/blog/update/".$data['Id'];?>>
+            <b>Edit Post Title</b>: <span class="red">*</span>&nbsp;<input type="text" name="title" value='<?php echo $data["Title"];?>' required><br><br>
+            <b>Edit Content</b>: <span class="red">*</span><br>
             <textarea id='post' name="post" rows=4><?php echo $data['Post'];?></textarea><br><br>
+            <b>Edit Image</b>: <input type="file" name="file"><br><br>
+            <?php
+                if($data["Image"] == NULL)
+                {
+                    $image = '/Images/post_img.png';
+                }
+                else
+                {
+                    $image = $data['Image'];
+                }
+            ?>
+            <img src='<?php echo "../../..".$image;?>' width='200px' height='200px'><br>
             <input type="submit" name="submit" value="Update">
             <button><a onclick='return confirm("Are you sure you want to delete the post?")' href=<?php echo "/blog/delete/".$data['Id'];?>>Delete</a>
             </button>
